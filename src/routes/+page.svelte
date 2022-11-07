@@ -61,7 +61,7 @@
 		}
 		getData();
 	}}
-	class="w-full text-gray-900 p-2 mb-2"
+	class="w-full text-gray-900 p-2 mb-2 font-bold"
 >
 	<option value="mens college basketball">Mens College Basketball</option>
 	<option value="womens college basketball">Womens College Basketball</option>
