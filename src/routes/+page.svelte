@@ -1,8 +1,15 @@
 <script>
 	import { onMount } from 'svelte';
 
+	// https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b
+	// https://www.espn.com/apis/devcenter/docs/rankings.html
+
 	function getData() {
-		fetch('https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings')
+		fetch(
+			`https://site.api.espn.com/apis/site/v2/sports/${sport}/${
+				sport === 'football' ? 'college-football' : 'mens-college-basketball'
+			}/rankings`
+		)
 			.then((response) => {
 				if (response.ok) return response.json();
 				return Promise.reject(response);
@@ -29,6 +36,7 @@
 		droppedOut = [];
 
 	let pollType = 'ap';
+	let sport = 'football';
 
 	$: maxVotes = ranks[0]?.points;
 </script>
@@ -38,6 +46,10 @@
 </svelte:head>
 
 <div class="flex items-center justify-between">
+	<select bind:value={sport} on:change={getData} class="text-gray-900 p-2">
+		<option value="football">Football</option>
+		<option value="basketball">Basketball</option>
+	</select>
 	<button
 		on:click={() => {
 			pollType = 'ap';
