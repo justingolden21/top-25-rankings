@@ -53,25 +53,25 @@
 	<title>{headline ?? 'College Football Rankings'}</title>
 </svelte:head>
 
+<select
+	bind:value={sport}
+	on:change={() => {
+		if (sport !== 'college football' && pollType !== 'ap' && pollType !== 'coaches') {
+			pollType = 'ap';
+		}
+		getData();
+	}}
+	class="w-full text-gray-900 p-2 mb-2"
+>
+	<option value="mens college basketball">Mens College Basketball</option>
+	<option value="womens college basketball">Womens College Basketball</option>
+	<option value="college football">College Football</option>
+	<!-- <option value="mlb baseball">MLB Baseball</option>
+	<option value="nba basketball">NBA Basketball</option>
+	<option value="wnba basketball">WNBA Basketball</option>
+	<option value="nfl football">NFL Football</option> -->
+</select>
 <div class="flex items-center justify-between">
-	<select
-		bind:value={sport}
-		on:change={() => {
-			if (sport !== 'college football' && pollType !== 'ap' && pollType !== 'coaches') {
-				pollType = 'ap';
-			}
-			getData();
-		}}
-		class="text-gray-900 p-2"
-	>
-		<option value="mens college basketball">Mens College Basketball</option>
-		<option value="womens college basketball">Womens College Basketball</option>
-		<option value="college football">College Football</option>
-		<!-- <option value="mlb baseball">MLB Baseball</option>
-		<option value="nba basketball">NBA Basketball</option>
-		<option value="wnba basketball">WNBA Basketball</option>
-		<option value="nfl football">NFL Football</option> -->
-	</select>
 	<button
 		on:click={() => {
 			pollType = 'ap';
@@ -181,7 +181,7 @@
 		@apply font-normal;
 	}
 	button {
-		@apply w-full p-2 m-2 font-bold bg-gray-400 text-gray-900 hover:bg-gray-200 transition-colors;
+		@apply w-full p-2 m-2 font-bold bg-gray-400 text-gray-900 hover:bg-gray-200 transition-colors first:ml-0 last:mr-0;
 	}
 	button.active {
 		@apply bg-white;
