@@ -14,6 +14,8 @@
 		// 'nfl football': '/football/nfl/rankings'
 	};
 
+	const POLL_TYPES = ['ap', 'coaches', 'fcs coaches', 'div ii coaches'];
+
 	function getData() {
 		fetch(`https://site.api.espn.com/apis/site/v2/sports${API_ENDPOINTS[sport]}`)
 			.then((response) => {
@@ -22,7 +24,7 @@
 			})
 			.then(function (data) {
 				console.log('success');
-				const idx = pollType === 'ap' ? 0 : 1;
+				const idx = POLL_TYPES.indexOf(pollType);
 				console.log(data);
 				ranks = data.rankings[idx].ranks;
 				headline = data.rankings[idx].headline;
@@ -52,7 +54,16 @@
 </svelte:head>
 
 <div class="flex items-center justify-between">
-	<select bind:value={sport} on:change={getData} class="text-gray-900 p-2">
+	<select
+		bind:value={sport}
+		on:change={() => {
+			if (sport !== 'college football' && pollType !== 'ap' && pollType !== 'coaches') {
+				pollType = 'ap';
+			}
+			getData();
+		}}
+		class="text-gray-900 p-2"
+	>
 		<option value="mens college basketball">Mens College Basketball</option>
 		<option value="womens college basketball">Womens College Basketball</option>
 		<option value="college football">College Football</option>
@@ -79,6 +90,26 @@
 	>
 		Coaches
 	</button>
+	{#if sport === 'college football'}
+		<button
+			on:click={() => {
+				pollType = 'fcs coaches';
+				getData();
+			}}
+			class:active={pollType === 'fcs coaches'}
+		>
+			FCS Coaches
+		</button>
+		<button
+			on:click={() => {
+				pollType = 'div ii coaches';
+				getData();
+			}}
+			class:active={pollType === 'div ii coaches'}
+		>
+			DIV II Coaches
+		</button>
+	{/if}
 </div>
 
 <h1 class="mt-4 mb-8 pb-2 text-center text-xl sm:text-2xl md:text-3xl border-b">{headline}</h1>
