@@ -46,7 +46,7 @@
 		droppedOut = [];
 
 	let pollType = 'ap';
-	let sport = 'college football';
+	let sport = 'mens college basketball';
 
 	$: maxVotes = ranks[0]?.points;
 </script>
