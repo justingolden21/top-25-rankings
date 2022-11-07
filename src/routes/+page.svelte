@@ -112,7 +112,7 @@
 	{/if}
 </div>
 
-<h1 class="mt-4 mb-8 pb-2 text-center text-xl sm:text-2xl md:text-3xl border-b">{headline}</h1>
+<h1 class="mt-4 mb-8 pb-2 text-center text-lg sm:text-xl md:text-2xl border-b">{headline}</h1>
 
 <table class="mx-auto w-full bg-gray-900 text-left">
 	<tr>
@@ -181,7 +181,7 @@
 		@apply font-normal;
 	}
 	button {
-		@apply w-full p-2 m-2 font-bold bg-gray-400 text-gray-900 hover:bg-gray-200 transition-colors first:ml-0 last:mr-0;
+		@apply w-full p-2 m-2 font-bold bg-gray-400 text-gray-900 hover:bg-gray-200 transition-colors first:ml-0 last:mr-0 text-sm md:text-lg self-stretch;
 	}
 	button.active {
 		@apply bg-white;
