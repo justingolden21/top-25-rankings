@@ -4,12 +4,18 @@
 	// https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b
 	// https://www.espn.com/apis/devcenter/docs/rankings.html
 
+	const API_ENDPOINTS = {
+		'mens college basketball': '/basketball/mens-college-basketball/rankings',
+		'womens college basketball': '/basketball/womens-college-basketball/rankings',
+		'college football': '/football/college-football/rankings'
+		// 'mlb baseball': '/baseball/mlb/rankings',
+		// 'nba basketball': '/basketball/nba/rankings',
+		// 'wnba basketball': '/basketball/wnba/rankings',
+		// 'nfl football': '/football/nfl/rankings'
+	};
+
 	function getData() {
-		fetch(
-			`https://site.api.espn.com/apis/site/v2/sports/${sport}/${
-				sport === 'football' ? 'college-football' : 'mens-college-basketball'
-			}/rankings`
-		)
+		fetch(`https://site.api.espn.com/apis/site/v2/sports${API_ENDPOINTS[sport]}`)
 			.then((response) => {
 				if (response.ok) return response.json();
 				return Promise.reject(response);
@@ -36,7 +42,7 @@
 		droppedOut = [];
 
 	let pollType = 'ap';
-	let sport = 'football';
+	let sport = 'college football';
 
 	$: maxVotes = ranks[0]?.points;
 </script>
@@ -47,8 +53,13 @@
 
 <div class="flex items-center justify-between">
 	<select bind:value={sport} on:change={getData} class="text-gray-900 p-2">
-		<option value="football">Football</option>
-		<option value="basketball">Basketball</option>
+		<option value="mens college basketball">Mens College Basketball</option>
+		<option value="womens college basketball">Womens College Basketball</option>
+		<option value="college football">College Football</option>
+		<!-- <option value="mlb baseball">MLB Baseball</option>
+		<option value="nba basketball">NBA Basketball</option>
+		<option value="wnba basketball">WNBA Basketball</option>
+		<option value="nfl football">NFL Football</option> -->
 	</select>
 	<button
 		on:click={() => {
