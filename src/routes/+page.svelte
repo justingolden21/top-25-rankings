@@ -25,14 +25,15 @@
 			})
 			.then(function (data) {
 				console.log('success');
+				// console.log(JSON.stringify(data, null, 2));
 				const idx = POLL_TYPES.indexOf(pollType);
-				console.log(data);
 				ranks = data.rankings[idx].ranks;
 				headline = data.rankings[idx].headline;
 				others = data.rankings[idx].others;
 				droppedOut = data.rankings[idx].droppedOut;
 			})
 			.catch(function (err) {
+				window.alert('Error getting data');
 				console.warn(err);
 			});
 	}
