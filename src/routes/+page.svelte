@@ -3,6 +3,7 @@
 
 	// https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b
 	// https://www.espn.com/apis/devcenter/docs/rankings.html
+	// TODO: add option to see previous seasons and weeks
 
 	const API_ENDPOINTS = {
 		'mens college basketball': '/basketball/mens-college-basketball/rankings',
