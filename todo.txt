@@ -1,0 +1,5 @@
+dynamic routing and url params
+
+sort by season and week
+
+more rankings (playoff, other sports (cors issue))
