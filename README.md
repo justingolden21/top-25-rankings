@@ -15,3 +15,9 @@ Made by [Justin Golden](https://justingolden.me) with Tailwind and Svelte Kit
 `npm run build`
 
 `npm run preview`
+
+### Docs
+
+[Discussion](https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b)
+
+[Docs](https://www.espn.com/apis/devcenter/docs/rankings.html)
