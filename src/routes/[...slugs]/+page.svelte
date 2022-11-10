@@ -4,13 +4,24 @@
 
 	export let data;
 
-	const POLL_TYPES = ['ap', 'coaches', 'fcs-coaches', 'div-ii-coaches', 'div-iii-coaches'];
+	const FOOTBALL_POLL_TYPES = [
+		'cfp-rankings',
+		'ap',
+		'coaches',
+		'fcs-coaches',
+		'div-ii-coaches',
+		'div-iii-coaches'
+	];
+	const BASKETBALL_POLL_TYPES = ['ap', 'coaches'];
 
 	$: params = $page.params.slugs.split('/');
 	$: paramsSport = params[0];
 	$: paramsPoll = params[1];
 
-	$: idx = POLL_TYPES.indexOf(paramsPoll);
+	$: idx =
+		paramsSport === 'college-football'
+			? FOOTBALL_POLL_TYPES.indexOf(paramsPoll)
+			: BASKETBALL_POLL_TYPES.indexOf(paramsPoll);
 	$: ranks = data.rankings[idx]?.ranks ?? [];
 	$: headline = data.rankings[idx]?.headline ?? [];
 	$: others = data.rankings[idx]?.others ?? [];
@@ -37,6 +48,17 @@
 	<option value="nfl-football">NFL Football</option> -->
 </select>
 <div class="flex items-center justify-between">
+	{#if paramsSport === 'college-football'}
+		<button
+			on:click={() => {
+				goto(`/${paramsSport}/cfp-rankings`);
+			}}
+			class:active={paramsPoll === 'cfp-rankings'}
+		>
+			CFP Rankings
+		</button>
+	{/if}
+
 	<button
 		on:click={() => {
 			goto(`/${paramsSport}/ap`);
