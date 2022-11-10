@@ -97,14 +97,16 @@
 		>
 			<td class="text-xl sm:text-3xl">{ranking.current}</td>
 			<td>
-				<img
-					class="w-6 sm:w-8 md:w-10 mr-2 xs:inline"
-					loading="lazy"
-					src={ranking.team.logo}
-					alt={ranking.team.name + ' logo'}
-					width="500"
-					height="500"
-				/>
+				{#if ranking.team.logo}
+					<img
+						class="w-6 sm:w-8 md:w-10 mr-2 xs:inline"
+						loading="lazy"
+						src={ranking.team.logo}
+						alt={ranking.team.name + ' logo'}
+						width="500"
+						height="500"
+					/>
+				{/if}
 				<span class="tracking-wider">
 					{ranking.team.nickname}
 				</span>
