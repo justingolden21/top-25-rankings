@@ -90,7 +90,8 @@
 			<td class="text-xl sm:text-3xl">{ranking.current}</td>
 			<td>
 				<img
-					class="w-6 sm:w-8 md:w-10 mr-2 xs:inline bg-white p-1"
+					class="w-6 sm:w-8 md:w-10 mr-2 xs:inline p-1"
+					style="background-color: #{ranking.team.color}33;"
 					loading="lazy"
 					src={ranking.team.logo}
 					alt={ranking.team.name + ' logo'}
