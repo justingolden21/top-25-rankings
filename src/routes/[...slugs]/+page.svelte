@@ -84,10 +84,10 @@
 	</tr>
 	{#each ranks as ranking}
 		<tr class="odd:bg-gray-800">
-			<td class="font-bold sm:text-3xl">{ranking.current}</td>
+			<td class="font-bold text-xl sm:text-3xl">{ranking.current}</td>
 			<td>
 				<img
-					class="inline w-6 sm:w-8 md:w-10 mr-2"
+					class="w-6 sm:w-8 md:w-10 mr-2 xs:inline"
 					loading="lazy"
 					src={ranking.team.logo}
 					alt={ranking.team.name + ' logo'}
