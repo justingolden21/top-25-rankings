@@ -103,7 +103,10 @@
 	{/if}
 </div>
 
-<h1 class="mt-4 mb-8 pb-2 text-center text-lg sm:text-xl md:text-2xl border-b">{headline}</h1>
+<h1 class="mt-4 mb-8 pb-2 text-center text-lg sm:text-xl md:text-2xl border-b">
+	<img class="w-6 h-6 hidden xs:inline-block" src="/favicon.svg" alt="logo" />
+	{headline}
+</h1>
 
 <table class="mx-auto w-full bg-gray-900 text-left">
 	<tr>
