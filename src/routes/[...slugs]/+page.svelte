@@ -112,7 +112,9 @@
 	<tr>
 		<th>Rank</th>
 		<th>Team</th>
-		<th>Votes</th>
+		{#if ranks[0].points !== 0}
+			<th>Votes</th>
+		{/if}
 		<th>Trend</th>
 	</tr>
 	{#each ranks as ranking}
@@ -136,13 +138,15 @@
 					{ranking.team.nickname}
 				</span>
 			</td>
-			<td>
-				{ranking.points}
-				{#if ranking.firstPlaceVotes}
-					({ranking.firstPlaceVotes})
-				{/if}
-				<div class="bg-white h-1" style="width:{(ranking.points / maxVotes) * 100}%" />
-			</td>
+			{#if ranks[0].points !== 0}
+				<td>
+					{ranking.points}
+					{#if ranking.firstPlaceVotes}
+						({ranking.firstPlaceVotes})
+					{/if}
+					<div class="bg-white h-1" style="width:{(ranking.points / maxVotes) * 100}%" />
+				</td>
+			{/if}
 			<td
 				class={ranking.trend[0] === '+'
 					? 'text-green-300'
