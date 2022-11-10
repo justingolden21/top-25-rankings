@@ -4,4 +4,4 @@ more rankings (playoff, other sports (cors issue))
 
 show teams' record and hi/lo vote
 
-copy link, share, print btns
+copy link, share, print btns. fullscreen and chromecast btns too
