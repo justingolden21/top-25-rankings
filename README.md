@@ -1,5 +1,7 @@
 # Top 25 College Football Rankings Website
 
+Currently live at https://sportstop25.netlify.app
+
 Made by [Justin Golden](https://justingolden.me) with Tailwind and Svelte Kit
 
 ### Setup
