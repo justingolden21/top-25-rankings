@@ -83,8 +83,11 @@
 		<th>Trend</th>
 	</tr>
 	{#each ranks as ranking}
-		<tr class="odd:bg-gray-800">
-			<td class="font-bold text-xl sm:text-3xl">{ranking.current}</td>
+		<tr
+			class="font-bold bg-no-repeat bg-center"
+			style="background-image: url('{ranking.team.logo}');"
+		>
+			<td class="text-xl sm:text-3xl">{ranking.current}</td>
 			<td>
 				<img
 					class="w-6 sm:w-8 md:w-10 mr-2 xs:inline"
@@ -106,11 +109,11 @@
 				<div class="bg-white h-1" style="width:{(ranking.points / maxVotes) * 100}%" />
 			</td>
 			<td
-				class="font-bold {ranking.trend[0] === '+'
+				class={ranking.trend[0] === '+'
 					? 'text-green-300'
 					: ranking.trend === '-'
 					? 'text-white'
-					: 'text-red-300'}"
+					: 'text-red-300'}
 			>
 				{ranking.trend}
 			</td>
@@ -136,7 +139,7 @@
 <style lang="postcss">
 	td,
 	th {
-		@apply p-4;
+		@apply p-4 bg-gray-900/90;
 	}
 	th {
 		@apply font-normal;
