@@ -4,24 +4,12 @@
 
 	export let data;
 
-	const FOOTBALL_POLL_TYPES = [
-		'cfp-rankings',
-		'ap',
-		'coaches',
-		'fcs-coaches',
-		'div-ii-coaches',
-		'div-iii-coaches'
-	];
-	const BASKETBALL_POLL_TYPES = ['ap', 'coaches'];
-
 	$: params = $page.params.slugs.split('/');
 	$: paramsSport = params[0];
-	$: paramsPoll = params[1];
 
-	$: idx =
-		paramsSport === 'college-football'
-			? FOOTBALL_POLL_TYPES.indexOf(paramsPoll)
-			: BASKETBALL_POLL_TYPES.indexOf(paramsPoll);
+	let currentPollIdx = 0;
+
+	$: idx = currentPollIdx;
 	$: ranks = data.rankings[idx]?.ranks ?? [];
 	$: headline = data.rankings[idx]?.shortHeadline ?? [];
 	$: others = data.rankings[idx]?.others ?? [];
@@ -36,7 +24,7 @@
 
 <select
 	value={paramsSport}
-	on:change={({ target }) => goto(`/${target.value}/${paramsPoll}`)}
+	on:change={({ target }) => goto(`/${target.value}`)}
 	class="w-full text-gray-900 p-2 mb-2 font-bold"
 >
 	<option value="mens-college-basketball">Mens College Basketball</option>
@@ -48,59 +36,16 @@
 	<option value="nfl-football">NFL Football</option> -->
 </select>
 <div class="flex items-center justify-between">
-	{#if paramsSport === 'college-football'}
+	{#each data.rankings as ranking, idx}
 		<button
 			on:click={() => {
-				goto(`/${paramsSport}/cfp-rankings`);
+				currentPollIdx = idx;
 			}}
-			class:active={paramsPoll === 'cfp-rankings'}
+			class:active={currentPollIdx === idx}
 		>
-			CFP Rankings
+			{ranking.shortName}
 		</button>
-	{/if}
-
-	<button
-		on:click={() => {
-			goto(`/${paramsSport}/ap`);
-		}}
-		class:active={paramsPoll === 'ap'}
-	>
-		AP
-	</button>
-	<button
-		on:click={() => {
-			goto(`/${paramsSport}/coaches`);
-		}}
-		class:active={paramsPoll === 'coaches'}
-	>
-		Coaches
-	</button>
-	{#if paramsSport === 'college-football'}
-		<button
-			on:click={() => {
-				goto(`/${paramsSport}/fcs-coaches`);
-			}}
-			class:active={paramsPoll === 'fcs-coaches'}
-		>
-			FCS Coaches
-		</button>
-		<button
-			on:click={() => {
-				goto(`/${paramsSport}/div-ii-coaches`);
-			}}
-			class:active={paramsPoll === 'div-ii-coaches'}
-		>
-			DIV II Coaches
-		</button>
-		<button
-			on:click={() => {
-				goto(`/${paramsSport}/div-iii-coaches`);
-			}}
-			class:active={paramsPoll === 'div-iii-coaches'}
-		>
-			DIV III Coaches
-		</button>
-	{/if}
+	{/each}
 </div>
 
 <h1 class="mt-4 mb-8 pb-2 text-center text-lg sm:text-xl md:text-2xl border-b">
@@ -173,7 +118,7 @@
 <footer class="mt-12">
 	<hr />
 	<small>
-		Data from ESPN. Website designed by <a
+		Data from ESPN. SportsTop25.netlify.app designed by <a
 			class="font-bold"
 			href="https://justingolden.me/"
 			target="_blank"

@@ -11,30 +11,16 @@ const API_ENDPOINTS = {
 };
 
 export async function load({ params }) {
-	const [paramsSport, paramsPoll] = params.slugs.split('/');
+	const paramsSport = params.slugs.split('/')[0];
 
 	// if sport is invalid, redirect to `/`
 	if (!Object.keys(API_ENDPOINTS).includes(paramsSport)) {
 		throw redirect(308, `/`);
 	}
 
-	// if poll is invalid, go to `/sport/ap`
-	if (
-		!['ap', 'coaches', 'fcs-coaches', 'div-ii-coaches', 'div-iii-coaches', 'cfp-rankings'].includes(
-			paramsPoll
-		)
-	) {
-		throw redirect(308, `/${paramsSport}/ap`);
-	}
-	// if poll is invalid for the sport, go to `/sport/ap`
-	else if (
-		(paramsPoll === 'fcs-coaches' ||
-			paramsPoll === 'div-ii-coaches' ||
-			paramsPoll === 'div-iii-coaches' ||
-			paramsPoll === 'cfp-rankings') &&
-		paramsSport !== 'college-football'
-	) {
-		throw redirect(308, `/${paramsSport}/ap`);
+	// if url contains another param, go to the sport
+	if (params.slugs.split('/')[1]) {
+		throw redirect(308, `/${paramsSport}`);
 	}
 
 	const response = await fetch(
