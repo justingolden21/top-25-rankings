@@ -23,7 +23,7 @@
 			? FOOTBALL_POLL_TYPES.indexOf(paramsPoll)
 			: BASKETBALL_POLL_TYPES.indexOf(paramsPoll);
 	$: ranks = data.rankings[idx]?.ranks ?? [];
-	$: headline = data.rankings[idx]?.headline ?? [];
+	$: headline = data.rankings[idx]?.shortHeadline ?? [];
 	$: others = data.rankings[idx]?.others ?? [];
 	$: droppedOut = data.rankings[idx]?.droppedOut ?? [];
 
