@@ -173,7 +173,7 @@
 <footer class="mt-12">
 	<hr />
 	<small>
-		Data from ESPN. Website designed by <a
+		Data from ESPN. SportsTop25.netlify.app designed by <a
 			class="font-bold"
 			href="https://justingolden.me/"
 			target="_blank"
