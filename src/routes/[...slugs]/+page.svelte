@@ -133,17 +133,12 @@
 
 <p class="my-4">
 	<b>Others receiving votes:</b>
-	{#each others as other}
-		{other.team.nickname}
-		{other.points},&nbsp;
-	{/each}
+	{others.map((other) => other.team.nickname).join(', ')}
 </p>
 
 <p class="my-4">
 	<b>Dropped out:</b>
-	{#each droppedOut as out}
-		{out.team.nickname},
-	{/each}
+	{droppedOut.map((out) => out.team.nickname).join(', ')}
 </p>
 
 <footer class="mt-12">
