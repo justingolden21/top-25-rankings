@@ -4,7 +4,7 @@
 
 	export let data;
 
-	const POLL_TYPES = ['ap', 'coaches', 'fcs-coaches', 'div-ii-coaches'];
+	const POLL_TYPES = ['ap', 'coaches', 'fcs-coaches', 'div-ii-coaches', 'div-iii-coaches'];
 
 	$: params = $page.params.slugs.split('/');
 	$: paramsSport = params[0];
@@ -69,6 +69,14 @@
 			class:active={paramsPoll === 'div-ii-coaches'}
 		>
 			DIV II Coaches
+		</button>
+		<button
+			on:click={() => {
+				goto(`/${paramsSport}/div-iii-coaches`);
+			}}
+			class:active={paramsPoll === 'div-iii-coaches'}
+		>
+			DIV III Coaches
 		</button>
 	{/if}
 </div>

@@ -19,12 +19,14 @@ export async function load({ params }) {
 	}
 
 	// if poll is invalid, go to `/sport/ap`
-	if (!['ap', 'coaches', 'fcs-coaches', 'div-ii-coaches'].includes(paramsPoll)) {
+	if (!['ap', 'coaches', 'fcs-coaches', 'div-ii-coaches', 'div-iii-coaches'].includes(paramsPoll)) {
 		throw redirect(308, `/${paramsSport}/ap`);
 	}
 	// if poll is invalid for the sport, go to `/sport/ap`
 	else if (
-		(paramsPoll === 'fcs-coaches' || paramsPoll === 'div-ii-coaches') &&
+		(paramsPoll === 'fcs-coaches' ||
+			paramsPoll === 'div-ii-coaches' ||
+			paramsPoll === 'div-iii-coaches') &&
 		paramsSport !== 'college-football'
 	) {
 		throw redirect(308, `/${paramsSport}/ap`);
