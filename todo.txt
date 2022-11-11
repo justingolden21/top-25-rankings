@@ -1,6 +1,6 @@
 sort by season and week
 
-more rankings (playoff, other sports (cors issue))
+other sports (standings available but not rankings)
 
 show hi/lo vote
 
