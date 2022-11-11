@@ -127,21 +127,19 @@
 {/if}
 
 <div class="flex">
-	{#if navigator.share}
-		<button
-			on:click={() => {
-				navigator.share({
-					title: headline,
-					text: `Check out the top 25 ${
-						paramsSport === 'college-football' ? 'football' : 'basketball'
-					} rankings`,
-					url: window.location.href
-				});
-			}}
-		>
-			Share
-		</button>
-	{/if}
+	<button
+		on:click={() => {
+			navigator?.share({
+				title: headline,
+				text: `Check out the top 25 ${
+					paramsSport === 'college-football' ? 'football' : 'basketball'
+				} rankings`,
+				url: window.location.href
+			});
+		}}
+	>
+		Share
+	</button>
 	<button on:click={() => window.print()}> Print </button>
 </div>
 
