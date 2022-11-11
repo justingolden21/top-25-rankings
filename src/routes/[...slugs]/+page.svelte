@@ -35,7 +35,7 @@
 	<option value="wnba-basketball">WNBA Basketball</option>
 	<option value="nfl-football">NFL Football</option> -->
 </select>
-<div class="flex items-center justify-between">
+<div class="flex items-center justify-between overflow-x-auto">
 	{#each data.rankings as ranking, idx}
 		<button
 			on:click={() => {
@@ -53,57 +53,61 @@
 	{headline}
 </h1>
 
-<table class="mx-auto w-full bg-gray-900 text-left">
-	<tr>
-		<th>Rank</th>
-		<th>Team</th>
-		{#if ranks[0].points !== 0}
-			<th>Votes</th>
-		{/if}
-		<th>Trend</th>
-	</tr>
-	{#each ranks as ranking}
-		<tr
-			class="font-bold bg-no-repeat bg-center"
-			style="background-image: url('{ranking.team.logo}');"
-		>
-			<td class="text-xl sm:text-3xl">{ranking.current}</td>
-			<td>
-				{#if ranking.team.logo}
-					<img
-						class="w-6 sm:w-8 md:w-10 mr-2 xs:inline bg-white p-1"
-						loading="lazy"
-						src={ranking.team.logo}
-						alt={ranking.team.name + ' logo'}
-						width="500"
-						height="500"
-					/>
-				{/if}
-				<span class="tracking-wider">
-					{ranking.team.nickname}
-				</span>
-			</td>
+<div class="overflow-x-auto">
+	<table class="mx-auto w-full bg-gray-900 text-left">
+		<tr>
+			<th>Rank</th>
+			<th>Team</th>
 			{#if ranks[0].points !== 0}
-				<td>
-					{ranking.points}
-					{#if ranking.firstPlaceVotes}
-						({ranking.firstPlaceVotes})
-					{/if}
-					<div class="bg-white h-1" style="width:{(ranking.points / maxVotes) * 100}%" />
-				</td>
+				<th>Votes</th>
 			{/if}
-			<td
-				class={ranking.trend[0] === '+'
-					? 'text-green-300'
-					: ranking.trend === '-'
-					? 'text-white'
-					: 'text-red-300'}
-			>
-				{ranking.trend === '-' ? '\u2014' : ranking.trend}
-			</td>
+			<th>Trend</th>
+			<th>Record</th>
 		</tr>
-	{/each}
-</table>
+		{#each ranks as ranking}
+			<tr
+				class="font-bold bg-no-repeat bg-center"
+				style="background-image: url('{ranking.team.logo}');"
+			>
+				<td class="text-xl sm:text-3xl">{ranking.current}</td>
+				<td>
+					{#if ranking.team.logo}
+						<img
+							class="w-6 sm:w-8 md:w-10 mr-2 xs:inline bg-white p-1"
+							loading="lazy"
+							src={ranking.team.logo}
+							alt={ranking.team.name + ' logo'}
+							width="500"
+							height="500"
+						/>
+					{/if}
+					<span class="tracking-wider">
+						{ranking.team.nickname}
+					</span>
+				</td>
+				{#if ranks[0].points !== 0}
+					<td>
+						{ranking.points}
+						{#if ranking.firstPlaceVotes}
+							({ranking.firstPlaceVotes})
+						{/if}
+						<div class="bg-white h-1" style="width:{(ranking.points / maxVotes) * 100}%" />
+					</td>
+				{/if}
+				<td
+					class={ranking.trend[0] === '+'
+						? 'text-green-300'
+						: ranking.trend === '-'
+						? 'text-white'
+						: 'text-red-300'}
+				>
+					{ranking.trend === '-' ? '\u2014' : ranking.trend}
+				</td>
+				<td>{ranking.recordSummary}</td>
+			</tr>
+		{/each}
+	</table>
+</div>
 
 <p class="my-4">
 	<b>Others receiving votes:</b>
