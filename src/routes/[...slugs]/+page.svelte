@@ -140,7 +140,7 @@
 <style lang="postcss">
 	td,
 	th {
-		@apply p-4 bg-gray-900/90;
+		@apply p-2 md:py-4 bg-gray-900/90;
 	}
 	th {
 		@apply font-normal text-xs md:text-sm;
