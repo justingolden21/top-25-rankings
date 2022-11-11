@@ -71,7 +71,7 @@
 				<td>
 					{#if ranking.team.logo}
 						<img
-							class="w-6 sm:w-8 md:w-10 mr-2 xs:inline bg-white rounded p-1"
+							class="w-6 xs:w-8 sm:w-10 md:w-12 mr-2 xs:inline bg-white rounded p-1"
 							loading="lazy"
 							src={ranking.team.logo}
 							alt={ranking.team.name + ' logo'}
@@ -140,7 +140,7 @@
 <style lang="postcss">
 	td,
 	th {
-		@apply p-2 md:py-4 bg-gray-900/90;
+		@apply p-2 sm:py-4 bg-gray-900/90;
 	}
 	th {
 		@apply font-normal text-xs md:text-sm;
