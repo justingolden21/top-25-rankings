@@ -76,7 +76,7 @@
 				<td>
 					{#if ranking.team.logo}
 						<img
-							class="w-6 sm:w-8 md:w-10 mr-2 xs:inline bg-white/10 backdrop-blur-sm rounded-sm p-1"
+							class="w-6 sm:w-8 md:w-10 mr-2 xs:inline bg-white rounded-sm p-1"
 							loading="lazy"
 							src={ranking.team.logo}
 							alt={ranking.team.name + ' logo'}
