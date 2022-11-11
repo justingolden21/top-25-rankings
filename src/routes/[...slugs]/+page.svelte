@@ -1,8 +1,20 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+
+	import { fade, fly } from 'svelte/transition';
 
 	export let data;
+
+	let loaded = false;
+	onMount(() => (loaded = true));
+
+	$: if (data.rankings || currentPollIdx) {
+		// runs when `data` or `currentPollIdx` changes
+		loaded = false;
+		setTimeout(() => (loaded = true), 250);
+	}
 
 	$: params = $page.params.slugs.split('/');
 	$: paramsSport = params[0];
@@ -68,51 +80,55 @@
 			<th>Record</th>
 		</tr>
 		{#each ranks as ranking}
-			<tr
-				class="font-bold bg-no-repeat bg-center"
-				style="background-image: url('{ranking.team.logo}');"
-			>
-				<td class="text-xl sm:text-3xl">{ranking.current}</td>
-				<td>
-					{#if ranking.team.logo}
-						<img
-							class="w-6 sm:w-8 md:w-10 mr-2 xs:inline bg-white p-1"
-							loading="lazy"
-							src={ranking.team.logo}
-							alt={ranking.team.name + ' logo'}
-							width="500"
-							height="500"
-						/>
-					{/if}
-
-					{#if ranking.team.links.length > 0}
-						<a href={ranking.team.links[0]?.href} target="_blank" rel="noreferrer">
-							{ranking.team.nickname}
-						</a>
-					{:else}
-						{ranking.team.nickname}
-					{/if}
-				</td>
-				{#if ranks[0].points !== 0}
-					<td>
-						{ranking.points}
-						{#if ranking.firstPlaceVotes}
-							({ranking.firstPlaceVotes})
-						{/if}
-						<div class="bg-white h-1" style="width:{(ranking.points / maxVotes) * 100}%" />
-					</td>
-				{/if}
-				<td
-					class={ranking.trend[0] === '+'
-						? 'text-green-300'
-						: ranking.trend === '-'
-						? 'text-white'
-						: 'text-red-300'}
+			{#if loaded}
+				<tr
+					in:fly={{ x: -200, duration: 500, delay: `${ranking.current - 1}` * 50 }}
+					out:fade={{ duration: 250 }}
+					class="font-bold bg-no-repeat bg-center"
+					style="background-image: url('{ranking.team.logo}');"
 				>
-					{ranking.trend === '-' ? '\u2014' : ranking.trend}
-				</td>
-				<td>{ranking.recordSummary}</td>
-			</tr>
+					<td class="text-xl sm:text-3xl">{ranking.current}</td>
+					<td>
+						{#if ranking.team.logo}
+							<img
+								class="w-6 sm:w-8 md:w-10 mr-2 xs:inline bg-white p-1"
+								loading="lazy"
+								src={ranking.team.logo}
+								alt={ranking.team.name + ' logo'}
+								width="500"
+								height="500"
+							/>
+						{/if}
+
+						{#if ranking.team.links.length > 0}
+							<a href={ranking.team.links[0]?.href} target="_blank" rel="noreferrer">
+								{ranking.team.nickname}
+							</a>
+						{:else}
+							{ranking.team.nickname}
+						{/if}
+					</td>
+					{#if ranks[0].points !== 0}
+						<td>
+							{ranking.points}
+							{#if ranking.firstPlaceVotes}
+								({ranking.firstPlaceVotes})
+							{/if}
+							<div class="bg-white h-1" style="width:{(ranking.points / maxVotes) * 100}%" />
+						</td>
+					{/if}
+					<td
+						class={ranking.trend[0] === '+'
+							? 'text-green-300'
+							: ranking.trend === '-'
+							? 'text-white'
+							: 'text-red-300'}
+					>
+						{ranking.trend === '-' ? '\u2014' : ranking.trend}
+					</td>
+					<td>{ranking.recordSummary}</td>
+				</tr>
+			{/if}
 		{/each}
 	</table>
 </div>
