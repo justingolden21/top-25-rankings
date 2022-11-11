@@ -115,7 +115,7 @@
 {#if others.length > 0}
 	<p class="my-4">
 		<b>Others receiving votes:</b>
-		{others.map((other) => other.team.nickname).join(', ')}
+		{others.map((other) => other.team.nickname + ` (${other.points})`).join(', ')}
 	</p>
 {/if}
 
