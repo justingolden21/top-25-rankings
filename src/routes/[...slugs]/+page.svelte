@@ -129,7 +129,7 @@
 <footer class="mt-12">
 	<hr />
 	<small>
-		Data from ESPN. SportsTop25.netlify.app designed by <a
+		Data from ESPN. Website designed by <a
 			href="https://justingolden.me/"
 			target="_blank"
 			rel="noreferrer">Justin Golden</a
