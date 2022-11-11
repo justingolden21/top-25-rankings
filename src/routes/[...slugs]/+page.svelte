@@ -83,7 +83,7 @@
 					{/if}
 					<a
 						class="tracking-wider"
-						href={ranking.team.links[0].href}
+						href={ranking.team.links[0]?.href}
 						target="_blank"
 						rel="noreferrer"
 					>
