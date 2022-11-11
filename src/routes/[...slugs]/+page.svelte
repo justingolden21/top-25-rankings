@@ -138,6 +138,213 @@
 	</small>
 </footer>
 
+<div class="grid grid-cols-5">
+	{#each ranks as ranking, idx}
+		<div
+			class="relative bg-no-repeat bg-center bg-white w-32 h-32"
+			style="background-image: url('{ranking.team.logo}'); "
+		>
+			<div class="bg-white/75 px-1 py-4 w-full h-full text-gray-900">
+				<div
+					class="absolute top-0 left-0 font-bold flex justify-center items-center w-6 h-6 text-xl bg-white"
+				>
+					{idx + 1}
+				</div>
+				<img class="w-12 block bg-white p-1" src={ranking.team.logo} alt="" />
+				<p class="font-bold">
+					{ranking.team.nickname}
+				</p>
+				<p class="text-sm">
+					{ranking.team.name}
+				</p>
+			</div>
+		</div>
+	{/each}
+</div>
+
+<br />
+<br />
+
+<div class="grid grid-cols-5">
+	{#each ranks as ranking, idx}
+		<div
+			class="relative bg-no-repeat bg-center bg-cover bg-white w-32 h-32"
+			style="background-image: url('{ranking.team.logo}'); "
+		>
+			<div class="bg-white/75 px-1 py-4 w-full h-full text-gray-900 font-bold">
+				<div
+					class="absolute top-0 left-0 flex justify-center items-center w-6 h-6 text-xl bg-white"
+				>
+					{idx + 1}
+				</div>
+				<img
+					class="absolute top-0 right-0 w-12 block bg-white p-1"
+					src={ranking.team.logo}
+					alt=""
+				/>
+				<br />
+				<p class="font-bold">
+					{ranking.team.nickname}
+				</p>
+				<p class="text-sm">
+					{ranking.team.name}
+				</p>
+			</div>
+		</div>
+	{/each}
+</div>
+
+<br />
+<br />
+
+<div class="grid grid-cols-5">
+	{#each ranks as ranking, idx}
+		<div
+			class="relative bg-no-repeat bg-center bg-cover w-32 h-32"
+			style="background-image: url('{ranking.team.logo}'); background-color: #{ranking.team.color};"
+		>
+			<div class="bg-white/90 px-1 py-4 w-full h-full text-gray-900 font-bold">
+				<div
+					class="absolute top-0 left-0 flex justify-center items-center w-6 h-6 text-xl bg-white"
+				>
+					{idx + 1}
+				</div>
+				<img class="mx-auto w-12 block" src={ranking.team.logo} alt="" />
+				<p class="text-center text-md">
+					{ranking.team.nickname}
+				</p>
+				<p class="text-center text-sm">
+					{ranking.team.name}
+				</p>
+			</div>
+		</div>
+	{/each}
+</div>
+
+<br />
+<br />
+
+<div class="grid grid-cols-5">
+	{#each ranks as ranking, idx}
+		<div
+			class="relative bg-no-repeat bg-center bg-cover w-32 h-32 bg-white border-2 border-x-4 border-gray-100"
+			style="background-image: url('{ranking.team.logo}');"
+		>
+			<div
+				class="bg-white/75 w-full h-full text-gray-900 font-bold flex items-center justify-center"
+			>
+				<div class="absolute top-0 left-0 flex justify-center items-center w-6 h-6 text-xl">
+					{idx + 1}
+				</div>
+				<div class="bg-white/50 p-1 w-full">
+					<p class="mt-2 text-center text-lg">
+						{ranking.team.nickname}
+					</p>
+					<p class="text-center text-md">
+						{ranking.team.name}
+					</p>
+				</div>
+			</div>
+		</div>
+	{/each}
+</div>
+
+<br />
+<br />
+
+<div class="grid grid-cols-5">
+	{#each ranks as ranking, idx}
+		<div
+			class="relative bg-no-repeat bg-center bg-cover w-32 h-32 bg-white border-2 border-x-4 border-gray-100"
+			style="background-image: url('{ranking.team.logo}');"
+		>
+			<div
+				class="w-full h-full text-gray-900 font-bold flex items-center justify-center"
+				style="background-color: #{ranking.team.color}33;"
+			>
+				<div class="absolute top-0 left-0 flex justify-center items-center w-6 h-6 text-xl">
+					{idx + 1}
+				</div>
+				<div class="bg-white/75 p-1 w-full">
+					<p class="mt-2 text-center text-lg">
+						{ranking.team.nickname}
+					</p>
+					<p class="text-center text-md">
+						{ranking.team.name}
+					</p>
+				</div>
+			</div>
+		</div>
+	{/each}
+</div>
+
+<br />
+<br />
+
+<div class="grid grid-cols-5">
+	{#each ranks as ranking, idx}
+		<div
+			class="relative bg-no-repeat bg-center bg-cover w-32 h-32 bg-white border-2 border-x-4 border-gray-100"
+			style="background-image: url('{ranking.team.logo}');"
+		>
+			<div class="w-full h-full text-gray-900 font-bold flex items-center justify-center">
+				<div
+					class="absolute top-0 left-0 bg-white/75 p-1 flex justify-center items-center w-6 h-6 text-xl"
+				>
+					{idx + 1}
+				</div>
+				<p class="bg-white/75 w-full text-center text-xl">{ranking.team.nickname}</p>
+			</div>
+		</div>
+	{/each}
+</div>
+
+<br />
+<br />
+
+<div class="grid grid-cols-5">
+	{#each ranks as ranking, idx}
+		<div
+			class="relative bg-no-repeat bg-center bg-cover w-32 h-32 bg-white border-2 border-x-4 border-gray-100 text-gray-900 font-bold"
+			style="background-image: url('{ranking.team.logo}');"
+		>
+			<div
+				class="absolute top-0 left-0 bg-white/75 p-1 flex justify-center items-center w-8 h-8 text-2xl"
+			>
+				{idx + 1}
+			</div>
+			<p
+				class="absolute bottom-0 bg-white/75 w-full h-1/2 p-1 flex items-center justify-center text-center text-xl"
+			>
+				{ranking.team.nickname}
+			</p>
+		</div>
+	{/each}
+</div>
+
+<br />
+<br />
+
+<div class="grid grid-cols-5">
+	{#each ranks as ranking, idx}
+		<div
+			class="relative bg-no-repeat bg-center bg-cover w-32 h-32 bg-white border-2 border-x-4 border-gray-900 text-gray-900 font-bold"
+			style="background-image: url('{ranking.team.logo}');"
+		>
+			<div
+				class="absolute top-0 left-0 bg-white/75 backdrop-blur-sm shadow p-1 flex justify-center items-center w-8 h-8 text-2xl"
+			>
+				{idx + 1}
+			</div>
+			<p
+				class="absolute bottom-0 bg-white/75 backdrop-blur-sm shadow w-full h-1/2 p-1 flex items-center justify-center text-center text-xl"
+			>
+				{ranking.team.nickname}
+			</p>
+		</div>
+	{/each}
+</div>
+
 <style lang="postcss">
 	td,
 	th {
