@@ -28,7 +28,7 @@
 		currentPollIdx = 0;
 		goto(`/${target.value}`);
 	}}
-	class="w-full text-gray-900 p-2 mb-2 font-bold"
+	class="w-full text-gray-900 p-2 mb-2 font-bold rounded"
 >
 	<option value="mens-college-basketball">Mens College Basketball</option>
 	<option value="womens-college-basketball">Womens College Basketball</option>
@@ -76,7 +76,7 @@
 				<td>
 					{#if ranking.team.logo}
 						<img
-							class="w-6 sm:w-8 md:w-10 mr-2 xs:inline bg-white rounded-sm p-1"
+							class="w-6 sm:w-8 md:w-10 mr-2 xs:inline bg-white rounded p-1"
 							loading="lazy"
 							src={ranking.team.logo}
 							alt={ranking.team.name + ' logo'}
@@ -147,7 +147,7 @@
 		@apply font-normal text-xs md:text-sm;
 	}
 	button {
-		@apply w-full p-2 m-2 font-bold bg-gray-400 text-gray-900 hover:bg-gray-200 transition-colors first:ml-0 last:mr-0 text-sm md:text-lg self-stretch;
+		@apply w-full p-2 m-2 font-bold bg-gray-400 text-gray-900 hover:bg-gray-200 transition-colors first:ml-0 last:mr-0 text-sm md:text-lg self-stretch rounded;
 	}
 	button.active {
 		@apply bg-white;
