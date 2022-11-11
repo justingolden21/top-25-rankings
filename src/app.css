@@ -7,7 +7,7 @@
 }
 
 html {
-	@apply bg-gray-900 text-white sm:text-lg md:text-xl selection:bg-gray-600 tabular-nums;
+	@apply bg-gray-900 text-white sm:text-lg md:text-xl selection:bg-gray-600 tabular-nums print:bg-white print:text-gray-900 print:text-sm;
 }
 
 img {

@@ -126,6 +126,25 @@
 	</p>
 {/if}
 
+<div class="flex">
+	{#if navigator.share}
+		<button
+			on:click={() => {
+				navigator.share({
+					title: headline,
+					text: `Check out the top 25 ${
+						paramsSport === 'college-football' ? 'football' : 'basketball'
+					} rankings`,
+					url: window.location.href
+				});
+			}}
+		>
+			Share
+		</button>
+	{/if}
+	<button on:click={() => window.print()}> Print </button>
+</div>
+
 <footer class="mt-12">
 	<hr />
 	<small>
@@ -140,14 +159,14 @@
 <style lang="postcss">
 	td,
 	th {
-		@apply p-2 sm:py-4 bg-gray-900/90;
+		@apply p-2 print:py-0 sm:py-4 bg-gray-900/90;
 	}
 	th {
 		@apply font-normal text-xs md:text-sm;
 	}
 	button,
 	select {
-		@apply w-full p-1 md:p-2 text-gray-900 font-bold text-sm md:text-base rounded;
+		@apply w-full p-1 md:p-2 text-gray-900 font-bold text-sm md:text-base rounded print:hidden;
 	}
 	button {
 		@apply mx-2 bg-gray-400 hover:bg-white transition-colors first:ml-0 last:mr-0 self-stretch;
