@@ -81,9 +81,14 @@
 							height="500"
 						/>
 					{/if}
-					<span class="tracking-wider">
+					<a
+						class="tracking-wider"
+						href={ranking.team.links[0].href}
+						target="_blank"
+						rel="noreferrer"
+					>
 						{ranking.team.nickname}
-					</span>
+					</a>
 				</td>
 				{#if ranks[0].points !== 0}
 					<td>
@@ -123,7 +128,6 @@
 	<hr />
 	<small>
 		Data from ESPN. SportsTop25.netlify.app designed by <a
-			class="font-bold"
 			href="https://justingolden.me/"
 			target="_blank"
 			rel="noreferrer">Justin Golden</a
@@ -144,5 +148,8 @@
 	}
 	button.active {
 		@apply bg-white;
+	}
+	a {
+		@apply font-bold hover:underline;
 	}
 </style>

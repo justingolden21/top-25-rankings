@@ -2,7 +2,7 @@ sort by season and week
 
 more rankings (playoff, other sports (cors issue))
 
-show teams' record and hi/lo vote
+show hi/lo vote
 
 show teams' conferences
 
