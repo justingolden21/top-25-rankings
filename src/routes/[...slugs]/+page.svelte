@@ -81,14 +81,21 @@
 							height="500"
 						/>
 					{/if}
-					<a
-						class="tracking-wider"
-						href={ranking.team.links[0]?.href}
-						target="_blank"
-						rel="noreferrer"
-					>
-						{ranking.team.nickname}
-					</a>
+
+					{#if ranking.team.links.length > 0}
+						<a
+							class="tracking-wider"
+							href={ranking.team.links[0]?.href}
+							target="_blank"
+							rel="noreferrer"
+						>
+							{ranking.team.nickname}
+						</a>
+					{:else}
+						<span class="tracking-wider">
+							{ranking.team.nickname}
+						</span>
+					{/if}
 				</td>
 				{#if ranks[0].points !== 0}
 					<td>
