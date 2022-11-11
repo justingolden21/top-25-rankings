@@ -147,7 +147,7 @@
 		@apply font-normal text-xs md:text-sm;
 	}
 	button {
-		@apply w-full p-2 m-2 font-bold bg-gray-400 text-gray-900 hover:bg-gray-200 transition-colors first:ml-0 last:mr-0 text-sm md:text-lg self-stretch rounded;
+		@apply w-full p-1 md:p-2 m-2 font-bold bg-gray-400 text-gray-900 hover:bg-gray-200 transition-colors first:ml-0 last:mr-0 text-sm md:text-lg self-stretch rounded;
 	}
 	button.active {
 		@apply bg-white;
