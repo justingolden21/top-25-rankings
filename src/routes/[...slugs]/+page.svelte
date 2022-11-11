@@ -117,15 +117,19 @@
 	</table>
 </div>
 
-<p class="my-4">
-	<b>Others receiving votes:</b>
-	{others.map((other) => other.team.nickname).join(', ')}
-</p>
+{#if others.length > 0}
+	<p class="my-4">
+		<b>Others receiving votes:</b>
+		{others.map((other) => other.team.nickname).join(', ')}
+	</p>
+{/if}
 
-<p class="my-4">
-	<b>Dropped out:</b>
-	{droppedOut.map((out) => out.team.nickname).join(', ')}
-</p>
+{#if droppedOut.length > 0}
+	<p class="my-4">
+		<b>Dropped out:</b>
+		{droppedOut.map((out) => out.team.nickname).join(', ')}
+	</p>
+{/if}
 
 <footer class="mt-12">
 	<hr />
