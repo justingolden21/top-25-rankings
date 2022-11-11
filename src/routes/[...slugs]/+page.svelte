@@ -24,11 +24,11 @@
 
 <select
 	value={paramsSport}
+	class="mb-4"
 	on:change={({ target }) => {
 		currentPollIdx = 0;
 		goto(`/${target.value}`);
 	}}
-	class="w-full text-gray-900 p-2 mb-2 font-bold rounded"
 >
 	<option value="mens-college-basketball">Mens College Basketball</option>
 	<option value="womens-college-basketball">Womens College Basketball</option>
@@ -40,18 +40,13 @@
 </select>
 <div class="flex items-center justify-between overflow-x-auto">
 	{#each data.rankings as ranking, idx}
-		<button
-			on:click={() => {
-				currentPollIdx = idx;
-			}}
-			class:active={currentPollIdx === idx}
-		>
+		<button on:click={() => (currentPollIdx = idx)} class:active={currentPollIdx === idx}>
 			{ranking.shortName}
 		</button>
 	{/each}
 </div>
 
-<h1 class="mt-2 mb-4 pb-2 text-center text-base sm:text-lg md:text-xl border-b">
+<h1 class="my-4 pb-2 text-center text-base sm:text-lg md:text-xl border-b">
 	<img class="w-6 h-6 hidden xs:inline-block" src="/favicon.svg" alt="logo" />
 	{headline}
 </h1>
@@ -150,8 +145,12 @@
 	th {
 		@apply font-normal text-xs md:text-sm;
 	}
+	button,
+	select {
+		@apply w-full p-1 md:p-2 text-gray-900 font-bold text-sm md:text-base rounded;
+	}
 	button {
-		@apply w-full p-1 md:p-2 m-2 font-bold bg-gray-400 text-gray-900 hover:bg-white transition-colors first:ml-0 last:mr-0 text-sm md:text-lg self-stretch rounded;
+		@apply mx-2 bg-gray-400 hover:bg-white transition-colors first:ml-0 last:mr-0 self-stretch;
 	}
 	button.active {
 		@apply bg-white;
