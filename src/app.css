@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 *:focus {
-	@apply ring ring-gray-500 outline-none;
+	@apply ring ring-gray-600 outline-none;
 }
 
 html {
