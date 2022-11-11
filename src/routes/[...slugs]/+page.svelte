@@ -137,7 +137,7 @@
 		@apply p-4 bg-gray-900/90;
 	}
 	th {
-		@apply font-normal;
+		@apply font-normal text-xs md:text-sm;
 	}
 	button {
 		@apply w-full p-2 m-2 font-bold bg-gray-400 text-gray-900 hover:bg-gray-200 transition-colors first:ml-0 last:mr-0 text-sm md:text-lg self-stretch;
