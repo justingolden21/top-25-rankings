@@ -11,7 +11,7 @@
 
 	$: idx = currentPollIdx;
 	$: ranks = data.rankings[idx]?.ranks ?? [];
-	$: headline = data.rankings[idx]?.shortHeadline ?? [];
+	$: headline = data.rankings[idx]?.headline ?? [];
 	$: others = data.rankings[idx]?.others ?? [];
 	$: droppedOut = data.rankings[idx]?.droppedOut ?? [];
 
