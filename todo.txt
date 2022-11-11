@@ -9,3 +9,5 @@ show teams' conferences
 copy link, share, print btns. fullscreen and chromecast btns too
 
 ability to export and share image
+
+speak results button
