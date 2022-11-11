@@ -1,11 +1,15 @@
 sort by season and week
 
-more rankings (playoff, other sports (cors issue))
+other sports (standings available but not rankings)
 
 show hi/lo vote
 
 show teams' conferences
 
-copy link, share, print btns. fullscreen and chromecast btns too
+copy link btn and btns for specific social media
+
+fullscreen and chromecast btns
 
 ability to export and share image
+
+speak results button

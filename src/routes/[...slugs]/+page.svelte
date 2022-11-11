@@ -24,11 +24,11 @@
 
 <select
 	value={paramsSport}
+	class="mb-4"
 	on:change={({ target }) => {
 		currentPollIdx = 0;
 		goto(`/${target.value}`);
 	}}
-	class="w-full text-gray-900 p-2 mb-2 font-bold"
 >
 	<option value="mens-college-basketball">Mens College Basketball</option>
 	<option value="womens-college-basketball">Womens College Basketball</option>
@@ -40,18 +40,13 @@
 </select>
 <div class="flex items-center justify-between overflow-x-auto">
 	{#each data.rankings as ranking, idx}
-		<button
-			on:click={() => {
-				currentPollIdx = idx;
-			}}
-			class:active={currentPollIdx === idx}
-		>
+		<button on:click={() => (currentPollIdx = idx)} class:active={currentPollIdx === idx}>
 			{ranking.shortName}
 		</button>
 	{/each}
 </div>
 
-<h1 class="mt-4 mb-8 pb-2 text-center text-lg sm:text-xl md:text-2xl border-b">
+<h1 class="my-4 pb-2 text-center text-base sm:text-lg md:text-xl border-b">
 	<img class="w-6 h-6 hidden xs:inline-block" src="/favicon.svg" alt="logo" />
 	{headline}
 </h1>
@@ -76,7 +71,7 @@
 				<td>
 					{#if ranking.team.logo}
 						<img
-							class="w-6 sm:w-8 md:w-10 mr-2 xs:inline bg-white p-1"
+							class="w-6 xs:w-8 sm:w-10 md:w-12 mr-2 xs:inline bg-white rounded p-1"
 							loading="lazy"
 							src={ranking.team.logo}
 							alt={ranking.team.name + ' logo'}
@@ -117,20 +112,41 @@
 	</table>
 </div>
 
-<p class="my-4">
-	<b>Others receiving votes:</b>
-	{others.map((other) => other.team.nickname).join(', ')}
-</p>
+{#if others.length > 0}
+	<p class="my-4">
+		<b>Others receiving votes:</b>
+		{others.map((other) => other.team.nickname).join(', ')}
+	</p>
+{/if}
 
-<p class="my-4">
-	<b>Dropped out:</b>
-	{droppedOut.map((out) => out.team.nickname).join(', ')}
-</p>
+{#if droppedOut.length > 0}
+	<p class="my-4">
+		<b>Dropped out:</b>
+		{droppedOut.map((out) => out.team.nickname).join(', ')}
+	</p>
+{/if}
+
+<div class="flex">
+	<button
+		on:click={() => {
+			navigator?.share({
+				title: headline,
+				text: `Check out the top 25 ${
+					paramsSport === 'college-football' ? 'football' : 'basketball'
+				} rankings`,
+				url: window.location.href
+			});
+		}}
+	>
+		Share
+	</button>
+	<button on:click={() => window.print()}> Print </button>
+</div>
 
 <footer class="mt-12">
 	<hr />
 	<small>
-		Data from ESPN. SportsTop25.netlify.app designed by <a
+		Data from ESPN. Website designed by <a
 			href="https://justingolden.me/"
 			target="_blank"
 			rel="noreferrer">Justin Golden</a
@@ -348,13 +364,17 @@
 <style lang="postcss">
 	td,
 	th {
-		@apply p-4 bg-gray-900/90;
+		@apply p-2 print:py-0 sm:py-4 bg-gray-900/90;
 	}
 	th {
 		@apply font-normal text-xs md:text-sm;
 	}
+	button,
+	select {
+		@apply w-full p-1 md:p-2 text-gray-900 font-bold text-sm md:text-base rounded print:hidden;
+	}
 	button {
-		@apply w-full p-2 m-2 font-bold bg-gray-400 text-gray-900 hover:bg-gray-200 transition-colors first:ml-0 last:mr-0 text-sm md:text-lg self-stretch;
+		@apply mx-2 bg-gray-400 hover:bg-white transition-colors first:ml-0 last:mr-0 self-stretch;
 	}
 	button.active {
 		@apply bg-white;
