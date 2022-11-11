@@ -4,6 +4,8 @@ more rankings (playoff, other sports (cors issue))
 
 show teams' record and hi/lo vote
 
+show teams' conferences
+
 copy link, share, print btns. fullscreen and chromecast btns too
 
 ability to export and share image

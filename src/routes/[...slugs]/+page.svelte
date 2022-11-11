@@ -99,7 +99,7 @@
 					? 'text-white'
 					: 'text-red-300'}
 			>
-				{ranking.trend}
+				{ranking.trend === '-' ? '\u2014' : ranking.trend}
 			</td>
 		</tr>
 	{/each}
