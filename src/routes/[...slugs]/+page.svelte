@@ -2,7 +2,6 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { flip } from 'svelte/animate';
-	import { fly } from 'svelte/transition';
 
 	export let data;
 
@@ -48,15 +47,10 @@
 	{/each}
 </div>
 
-{#key headline}
-	<h1
-		class="my-4 pb-2 text-center text-base sm:text-lg md:text-xl border-b"
-		in:fly={{ y: -256, duration: 500 }}
-	>
-		<img class="w-6 h-6 hidden xs:inline-block" src="/favicon.svg" alt="logo" />
-		{headline}
-	</h1>
-{/key}
+<h1 class="my-4 pb-2 text-center text-base sm:text-lg md:text-xl border-b">
+	<img class="w-6 h-6 hidden xs:inline-block" src="/favicon.svg" alt="logo" />
+	{headline}
+</h1>
 
 <div class="overflow-x-auto">
 	<table class="mx-auto w-full bg-gray-900 text-left">
