@@ -1,6 +1,8 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { flip } from 'svelte/animate';
+	import { fade, blur, fly, slide, scale, draw, crossfade } from 'svelte/transition';
 
 	export let data;
 
@@ -46,10 +48,15 @@
 	{/each}
 </div>
 
-<h1 class="my-4 pb-2 text-center text-base sm:text-lg md:text-xl border-b">
-	<img class="w-6 h-6 hidden xs:inline-block" src="/favicon.svg" alt="logo" />
-	{headline}
-</h1>
+{#key headline}
+	<h1
+		class="my-4 pb-2 text-center text-base sm:text-lg md:text-xl border-b"
+		in:fly={{ y: -256, duration: 500 }}
+	>
+		<img class="w-6 h-6 hidden xs:inline-block" src="/favicon.svg" alt="logo" />
+		{headline}
+	</h1>
+{/key}
 
 <div class="overflow-x-auto">
 	<table class="mx-auto w-full bg-gray-900 text-left">
@@ -62,10 +69,11 @@
 			<th>Trend</th>
 			<th>Record</th>
 		</tr>
-		{#each ranks as ranking}
+		{#each ranks as ranking (ranking.team.nickname)}
 			<tr
 				class="font-bold bg-no-repeat bg-center"
 				style="background-image: url('{ranking.team.logo}');"
+				animate:flip={{ duration: 500 }}
 			>
 				<td class="text-xl sm:text-3xl">{ranking.current}</td>
 				<td>
@@ -94,7 +102,10 @@
 						{#if ranking.firstPlaceVotes}
 							({ranking.firstPlaceVotes})
 						{/if}
-						<div class="bg-white h-1" style="width:{(ranking.points / maxVotes) * 100}%" />
+						<div
+							class="bg-white h-1 transition-[width]"
+							style="width:{(ranking.points / maxVotes) * 100}%"
+						/>
 					</td>
 				{/if}
 				<td
