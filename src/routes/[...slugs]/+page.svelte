@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { flip } from 'svelte/animate';
-	import { fade, blur, fly, slide, scale, draw, crossfade } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 
 	export let data;
 
