@@ -114,15 +114,37 @@
 
 {#if others.length > 0}
 	<p class="my-4">
-		<b>Others receiving votes:</b>
-		{others.map((other) => other.team.nickname + ` (${other.points})`).join(', ')}
+		<span class="mr-2">Others receiving votes:</span>
+		{#each others as other, i}
+			{#if other.team.links.length > 0}
+				<a href={other.team.links[0]?.href} target="_blank" rel="noreferrer">
+					{other.team.nickname}
+				</a>
+				<span>({other.points})</span>
+			{:else}
+				{other.team.nickname}
+			{/if}
+			{#if i < others.length - 1}
+				|&nbsp;
+			{/if}
+		{/each}
 	</p>
 {/if}
 
 {#if droppedOut.length > 0}
 	<p class="my-4">
-		<b>Dropped out:</b>
-		{droppedOut.map((out) => out.team.nickname).join(', ')}
+		<span class="mr-2">Dropped out:</span>
+		{#each droppedOut as out, i}
+			{#if out.team.links.length > 0}
+				<a href={out.team.links[0]?.href} target="_blank" rel="noreferrer">{out.team.nickname}</a>
+				<span>({out.points})</span>
+			{:else}
+				{out.team.nickname}
+			{/if}
+			{#if i < droppedOut.length - 1}
+				|&nbsp;
+			{/if}
+		{/each}
 	</p>
 {/if}
 
