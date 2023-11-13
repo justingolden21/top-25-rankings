@@ -69,57 +69,59 @@
 			<th>Trend</th>
 			<th>Record</th>
 		</tr>
-		{#each ranks as ranking (ranking.team.nickname)}
-			<tr
-				class="font-bold bg-no-repeat bg-center"
-				style="background-image: url('{ranking.team.logo}');"
-				animate:flip={{ duration: 500 }}
-			>
-				<td class="text-xl sm:text-3xl">{ranking.current}</td>
-				<td>
-					{#if ranking.team.logo}
-						<img
-							class="w-6 xs:w-8 sm:w-10 md:w-12 mr-2 xs:inline bg-white rounded p-1"
-							loading="lazy"
-							src={ranking.team.logo}
-							alt={ranking.team.name + ' logo'}
-							width="500"
-							height="500"
-						/>
-					{/if}
-
-					{#if ranking.team.links.length > 0}
-						<a href={ranking.team.links[0]?.href} target="_blank" rel="noreferrer">
-							{ranking.team.nickname}
-						</a>
-					{:else}
-						{ranking.team.nickname}
-					{/if}
-				</td>
-				{#if ranks[0].points !== 0}
-					<td>
-						{ranking.points}
-						{#if ranking.firstPlaceVotes}
-							({ranking.firstPlaceVotes})
-						{/if}
-						<div
-							class="bg-white h-1 transition-[width]"
-							style="width:{(ranking.points / maxVotes) * 100}%"
-						/>
-					</td>
-				{/if}
-				<td
-					class={ranking.trend[0] === '+'
-						? 'text-green-300'
-						: ranking.trend === '-'
-						? 'text-white'
-						: 'text-red-300'}
+		{#key paramsSport}
+			{#each ranks as ranking (ranking.team.nickname)}
+				<tr
+					class="font-bold bg-no-repeat bg-center"
+					style="background-image: url('{ranking.team.logo}');"
+					animate:flip={{ duration: 500 }}
 				>
-					{ranking.trend === '-' ? '\u2014' : ranking.trend}
-				</td>
-				<td>{ranking.recordSummary}</td>
-			</tr>
-		{/each}
+					<td class="text-xl sm:text-3xl">{ranking.current}</td>
+					<td>
+						{#if ranking.team.logo}
+							<img
+								class="w-6 xs:w-8 sm:w-10 md:w-12 mr-2 xs:inline bg-white rounded p-1"
+								loading="lazy"
+								src={ranking.team.logo}
+								alt={ranking.team.name + ' logo'}
+								width="500"
+								height="500"
+							/>
+						{/if}
+
+						{#if ranking.team.links.length > 0}
+							<a href={ranking.team.links[0]?.href} target="_blank" rel="noreferrer">
+								{ranking.team.nickname}
+							</a>
+						{:else}
+							{ranking.team.nickname}
+						{/if}
+					</td>
+					{#if ranks[0].points !== 0}
+						<td>
+							{ranking.points}
+							{#if ranking.firstPlaceVotes}
+								({ranking.firstPlaceVotes})
+							{/if}
+							<div
+								class="bg-white h-1 transition-[width]"
+								style="width:{(ranking.points / maxVotes) * 100}%"
+							/>
+						</td>
+					{/if}
+					<td
+						class={ranking.trend[0] === '+'
+							? 'text-green-300'
+							: ranking.trend === '-'
+							? 'text-white'
+							: 'text-red-300'}
+					>
+						{ranking.trend === '-' ? '\u2014' : ranking.trend}
+					</td>
+					<td>{ranking.recordSummary}</td>
+				</tr>
+			{/each}
+		{/key}
 	</table>
 </div>
 
